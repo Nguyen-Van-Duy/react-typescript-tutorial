@@ -1,0 +1,82 @@
+type ListProps = {
+	data: {
+		id: string,
+		name: string,
+		age: number,
+		address: string,
+		phone: number,
+	}[]
+}
+
+..........................................................................Children
+
+type ChildrenProps = {
+	children: React.ReactNode | string
+}
+
+............................................................................button
+
+type ButtonsProps = {
+	handleClick: (event: React.MouseEvent<HTMLButtonElement>, id: number) => void
+}
+
+export const Button = (props: ButtonProps) => {
+	return <button onClick={(event) => props.handleClick(event, id)}>Click</button>
+}
+ 
+<Button handleClick={(event, id)=>return...} />
+
+
+...........................................................................input
+
+type InputProps = {
+	value: string,
+	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export const Input = (props: InputProps) => {
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {props.handleChange(event)}
+	return <input type='text' onChange={handleInputChange} value={props.value} />
+}
+
+<Input value='Dxt' handleChange={(event)=>return...} />
+
+............................................................................styles
+
+type ContainerProps = {
+	styles: React.CSSProperties
+}
+
+export const Container = (props: ContainerProps) => {
+	return <div style={props.styles} ></div>
+}
+
+<Container styles={{width: '100px', padding: '1rem' }} />
+
+............................................................................component props
+
+export type ProfileProps = {
+  name: string
+}
+
+export const Profile = ({ name }: ProfileProps) => {
+  return <div>Private Profile component. Name is {name}</div>
+}
+
+...................app
+<Private isLoggedIn={true} component={Profile} />
+
+type PrivateProps = {
+  isLoggedIn: boolean
+  Component: React.ComponentType<ProfileProps>
+}
+
+export const Private = ({ isLoggedIn, Component }: PrivateProps) => {
+  if (isLoggedIn) {
+    return <Component name='Vishwas' />
+  } else {
+    return <Login />
+  }
+}
+
+
