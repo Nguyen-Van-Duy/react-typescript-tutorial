@@ -1,0 +1,8 @@
+memo(List) hạn chế render component, so sánh tham chiếu, địa chỉ vùng nhớ (HOC)
+
+useCallback() dung khi component con dung React.memo, tranh re-render lai component con khi props thay doi (k dung memo thi k dung useCallback)
+reference types
+useCallback trả về một function (chính là function bạn pass vào ứng với tham số thứ nhất), callback function này sẽ được tạo lại khi một trong số các dependencies thay đổi. Nếu dependencies không đổi, function trả về sẽ là function trước đó -> tức là function pass xuống component con không bị tạo mới, tương đương không có object được tạo mới -> component con không bị re-render.
+
+useMemo han che logic render k can thiet
+
